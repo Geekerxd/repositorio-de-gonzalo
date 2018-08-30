@@ -1,4 +1,4 @@
-#######Título principal
+###Título principal
 Solución del primer problema
 Solcuión del segundo...
 Tercero
