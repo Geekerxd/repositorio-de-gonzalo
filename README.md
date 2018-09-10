@@ -1,5 +1,5 @@
 # repositorio-de-gonzalo
-# *HOLA* ~HUMANO~
+ *HOLA* ~HUMANO~
 ──────▄▀▄─────▄▀▄<br />
 ─────▄█░░▀▀▀▀▀░░█▄<br />
 ─▄▄──█░░░░░░░░░░░█──▄▄<br />
