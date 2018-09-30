@@ -23,7 +23,7 @@ datos p[20]; //20 alumnos como maximo
 int x; // para las opciones de cuando se quiere ir de una pestaña
 int c; //contador
 int numalums = 1; //numero de alumnos
-int q; //solo freseo
+bool q=false; //solo freseo
 
 void menu();
 
@@ -33,6 +33,9 @@ void main();
 void calific();
 void search();
 void modificar(); 
+void eliminate();
+
+string k; //para que el usuario me ingrese lo que quiere buscar.
 
 
 
@@ -52,31 +55,33 @@ void main() {
 
 }
 void menu() {
-	if (q > 0) { system("cls"); }
+	if (q==true) { system("cls"); }
 
 	locale::global(locale("spanish"));
 	cout << "   § Bienvenido al menú principal para Maestros de la UANL § \n" << endl;
 
 
 	cout << "    ¿qué desea hacer?" << endl;
-	cout << "     1. Agregar datos de un alumno.     \n     2. Ver los datos del alumno   \n     3. buscar alumno por matricula.\n     4. Modificar datos de un alumno.\n     0. Salir de este programa." << endl;
+	cout << "     1. Agregar datos de un alumno.     \n     2. Ver los datos del alumno   \n     3. buscar alumno por matricula.\n     4. Modificar datos de un alumno.\n     5. Eliminar un alumno.\n     0. Salir de este programa." << endl;
 	cin >> x;
 	switch (x) {
+		
 	case 1:
-		q++;
+		q = true;
 		agregar();  break;
 	case 2:
-		q++;
+		q = true;
 		view();  break;
 
 	case 3:
-		q++;
+		q = true;
 		search();  break;
-	case 4:cout << 
-		q++; 
+	case 4:
+		q = true;
 		modificar(); break;
-
-
+	case 5:
+		q = true;
+       eliminate(); break;
 	case 0:
 
 		cout << "\nFin de Todo :)";
@@ -84,7 +89,7 @@ void menu() {
 		break;
 
 	default:
-		q++;
+		q = true;
 		cout << "------------valor fuera de rango----------------"; system("pause>nul");
 		menu();
 		break;
@@ -241,7 +246,8 @@ void search() {
 	cout << "estas en la seccion para Buscar alumnos por matricula." << endl;
 
 	cout << "¿cual es la Matricula del alumno que Busca?\n";
-	string k;
+
+	
 
 	getline(cin, k);
 
@@ -312,9 +318,9 @@ void modificar() {
 	cout << "estas en la seccion para MODIFICAR alumnos por matricula." << endl;
 
 	cout << "¿cual es la Matricula del alumno que Busca?\n";
-	string m;
+	
 
-	getline(cin, m);
+	getline(cin, k);
 
 
 	bool encontrado = false;
@@ -326,7 +332,7 @@ void modificar() {
 		// c_str() convierte de string a cadena de caracteres
 		// strcmp sólo funciona con cadenas de caracteres
 
-		if (strcmp(m.c_str(), p[l].mat.c_str()) == 0) { // Si el matricula es igual que el especificado
+		if (strcmp(k.c_str(), p[l].mat.c_str()) == 0) { // Si el matricula es igual que el especificado
 			cout << "Lo encontré: " << endl;
 
 			cout << "----------Nombre(s): " << p[l].name << endl;
@@ -359,7 +365,8 @@ void modificar() {
 
 	if (encontrado) {
 
-		
+		 cout << "Haga otro click...\n";
+		 system("pause > nul");
 					cout << "¿que quieres modificar?\n 1.- Nombre\n 2.- Apellidos\n 3.- Correo\n 4.- Número de Celular\n 5.- Matrícula\n 6.- Dirección \n 7.- Calificacion 1\n 8.- Calificacion 2\n 9.- Calificacion Final\n";
 					cin >> x;
 					switch (x) {
@@ -427,9 +434,11 @@ void modificar() {
 		case 1:
 			menu(); break;
 		case 2:
+			modificar();
 			 break;
 		default:
 			cout << "valor fuera de rango";
+			modificar();
 			
 			break;
 		}
@@ -439,6 +448,93 @@ void modificar() {
 
 
 	}
+void eliminate() {
+	//tarea 16
+	system("cls");
+	cin.ignore();
+	cout << "Estas el la seccion para ELIMINAR A UN ALUMNO." << endl ;
+	cout << "Para eliminar a un alumno debe escribir la matricula: " << endl;
+
+
+
+	getline(cin, k);
+
+
+	bool encontrado = false;
+
+
+	int l = -1;
+	while (l < numalums)
+	{
+		// c_str() convierte de string a cadena de caracteres
+		// strcmp sólo funciona con cadenas de caracteres
+
+		if (strcmp(k.c_str(), p[l].mat.c_str()) == 0) { // Si el matricula es igual que el especificado
+			cout << "Lo encontré: " << endl;
+
+			cout << "----------Nombre(s): " << p[l].name << endl;
+			cout << "--------Apellido(s): " << p[l].last_name << endl;
+			cout << "-------------correo: " << p[l].email << endl;
+			cout << "------------celular: " << p[l].phone << endl;
+			cout << "----------matricula: " << p[l].mat << endl;
+			cout << "----------direccion: " << p[l].address << endl;
+
+			cout << "-----calificacion 1: " << p[l].cal1 << endl;
+			cout << "-----calificacion 2: " << p[l].cal2 << endl;
+			cout << "-calificacion final: " << p[l].calf << endl << endl << endl;
+
+
+
+			encontrado = true;
+			break; // Salir del ciclo de for
+		}
+		l++;
+	}
+
+	if (!encontrado) {
+		cout << "No había registros con ese nombre" << endl;
+	}
+
+	if (encontrado) {
+
+		cout << "Haga otro click...\n";
+		system("pause > nul");
+		cout << "¿que quieres Eliminarlo?\n 1.- Sí\n 2.- No\n";
+		cin >> x;
+		switch (x) {
+
+		case 1:
+			for (int i = l; i < numalums;i++) {
+				p[i] = p[i + 1];
+			}
+			numalums--;
+			cout << "OK";
+			break;
+		case 2: break;
+		default: break;
+		}
+	}
+
+
+
+	system("pause > nul");
+
+	cout << "\n¿deseas regresar al menu?" << endl;
+	cout << "1. sí     \n2. No " << endl;
+	cin >> x;
+	switch (x) {
+	case 1:
+		menu(); break;
+	case 2:
+		eliminate();
+		break;
+	default:
+		cout << "valor fuera de rango";
+		menu();
+
+		break;
+	}
+}
 
 	
 
