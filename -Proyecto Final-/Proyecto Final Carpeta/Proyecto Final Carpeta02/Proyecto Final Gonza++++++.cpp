@@ -7,20 +7,20 @@ using namespace std;
 
 struct datos {
 	string  name;
-	string last_name;                    //tengo que hacer que el usuario pueda escribir con espacios
+	string last_name;                    
 	string email;
-	string phone;                        //tengo que hacer que el usuario pueda escribir con espacios
+	string phone;                        
 	string mat;
-	string address;                      //tengo que hacer que el usuario pueda escribir con espacios
+	string address;                      
 	float cal1 = 0.0; float cal2 = 0.0; float calf = 0.0;
 };
 /*
 int a;
-cout << "¿cuantos alumnos  van a existir?"; cin >> a;*/
+cout << "Â¿cuantos alumnos  van a existir?"; cin >> a;*/
 
 datos p[20]; //20 alumnos como maximo
 
-int x; // para las opciones de cuando se quiere ir de una pestaña
+int x; // para las opciones de cuando se quiere ir de una pestaÃ±a
 int c; //contador
 int numalums=1; //numero de alumnos
 int q; //solo freseo
@@ -37,7 +37,7 @@ void main() {
 	if (q>0) { system("cls"); }
 	
 	locale::global(locale("spanish"));
-	cout << "   § Bienvenido al menú principal para Maestros de la UANL § \n" << endl;
+	cout << "   Â§ Bienvenido al menÃº principal para Maestros de la UANL Â§ \n" << endl;
 
 	p[0].name = { "Gonzalo Geeker" };
 	p[0].last_name = { "Aguilar Galeana" };
@@ -57,8 +57,8 @@ void main() {
 
 
 
-	cout << "     ¿qué desea hacer?" << endl;
-	cout << "     1. Agregar datos de un alumno.     \n     2. Ver los datos del alumno   \n     3. buscar alumno por matricula .\n     4. Salir de este programa." << endl;
+	cout << "     Â¿quÃ© desea hacer?" << endl;
+	cout << "     1. Agregar datos de un alumno.     \n     2. Ver los datos del alumno   \n     3. buscar alumno por matricula  y modificar.\n     4. Salir de este programa." << endl;
 	cin >> x;
 	switch (x) {
 	case 1:
@@ -94,7 +94,7 @@ void main() {
 
 void agregar() {
 	system("cls");
-	cout << "Estas el la sección de añadir datos.    \n";
+	cout << "Estas el la secciÃ³n de aÃ±adir datos.    \n";
 	
 
 	
@@ -110,8 +110,8 @@ void agregar() {
 
 
 
-	cout << "¿quieres añadir datos?" << endl;
-	cout << "1. sí     \n2. No " << endl;
+	cout << "Â¿quieres aÃ±adir datos?" << endl;
+	cout << "1. sÃ­     \n2. No " << endl;
 	cin >> x;
 	switch (x) {
 	case 1:
@@ -123,8 +123,8 @@ void agregar() {
 	}
 
 
-	cout << "\n¿deseas regresar al menu?" << endl;
-	cout << "1. sí     \n2. No " << endl;
+	cout << "\nÂ¿deseas regresar al menu?" << endl;
+	cout << "1. sÃ­     \n2. No " << endl;
 	cin >> x;
 	switch (x) {
 	case 1:
@@ -143,15 +143,15 @@ void agregar02() {
 	cout << "Agrega el(los) Nombre(s): ";                getline(cin, p[numalums].name);           cout << "OK";
 	cout << "\nAgrega el(los) apellido(s): ";            getline(cin, p[numalums].last_name);           cout << "OK";
 	cout << "\nAgrega el Correo: ";                      getline(cin, p[numalums].email);  	           cout << "OK";
-	cout << "\nAgrega el Número de Celular: ";           getline(cin, p[numalums].phone);		       cout << "OK";
-	cout << "\nAgrega la Matrícula: ";                   getline(cin, p[numalums].mat);		           cout << "OK";
-	cout << "\nAgrega la Dirección : ";                  getline(cin, p[numalums].address);	           cout << "OK";
+	cout << "\nAgrega el NÃºmero de Celular: ";           getline(cin, p[numalums].phone);		       cout << "OK";
+	cout << "\nAgrega la MatrÃ­cula: ";                   getline(cin, p[numalums].mat);		           cout << "OK";
+	cout << "\nAgrega la DirecciÃ³n : ";                  getline(cin, p[numalums].address);	           cout << "OK";
 
 
 	numalums++;
 
-	cout << "\n¿deseas agregar calificaciones?" << endl;
-	cout << "1. sí     \n2. No " << endl;
+	cout << "\nÂ¿deseas agregar calificaciones?" << endl;
+	cout << "1. sÃ­     \n2. No " << endl;
 	cin >> x;
 	switch (x) {
 	case 1:
@@ -181,7 +181,7 @@ void view() {
 	system("cls");
 	cout << "estas en la seccion para ver los datos de los alumnos." << endl;
 
-	/*cout<<"¿cual es el nombre del alumno que quiere ver?";*/
+	/*cout<<"Â¿cual es el nombre del alumno que quiere ver?";*/
 	
 	for (c = 0; c< numalums; c++) {   //muetra todos
 		cout << "----------Nombre(s): " << p[c].name << endl;
@@ -203,20 +203,18 @@ void view() {
 		cout << "------------celular: " << p[c].phone << endl;
 		cout << "----------matricula: " << p[c].mat << endl;
 		cout << "----------direccion: " << p[c].address << endl;
-
 		cout << "-----calificacion 1: " << p[c].cal1 << endl;
 		cout << "-----calificacion 2: " << p[c].cal2 << endl;
 		cout << "-calificacion final: " << p[c].calf << endl << endl << endl;
 		if (c == numalums - 1) { break; }
 	}
-
 	*/
 
 
 
 
-	cout << "\n¿deseas regresar al menu?" << endl;
-	cout << "1. sí     \n2. No " << endl;
+	cout << "\nÂ¿deseas regresar al menu?" << endl;
+	cout << "1. sÃ­     \n2. No " << endl;
 	cin >> x;
 	switch (x) {
 	case 1:
@@ -238,7 +236,7 @@ void search() {
 	system("cls");
 	cout << "estas en la seccion para Buscar alumnos por matricula." << endl;
 	
-	cout<<"¿cual es la Matricula del alumno que Busca?\n";
+	cout<<"Â¿cual es la Matricula del alumno que Busca?\n";
 	string k;
 	
 	getline(cin, k);
@@ -249,10 +247,10 @@ void search() {
 	while (l < numalums)
 	{
 		// c_str() convierte de string a cadena de caracteres
-		// strcmp sólo funciona con cadenas de caracteres
+		// strcmp sÃ³lo funciona con cadenas de caracteres
 
 		if (strcmp(k.c_str(), p[l].mat.c_str()) == 0) { // Si el matricula es igual que el especificado
-			cout << "Lo encontré: " << endl;
+			cout << "Lo encontrÃ©: " << endl;
 			
 			cout << "----------Nombre(s): " << p[l].name << endl;
 			cout << "--------Apellido(s): " << p[l].last_name << endl;
@@ -264,6 +262,15 @@ void search() {
 			cout << "-----calificacion 1: " << p[l].cal1 << endl;
 			cout << "-----calificacion 2: " << p[l].cal2 << endl;
 			cout << "-calificacion final: " << p[l].calf << endl << endl << endl;
+            
+            cout << "Â¿que quieres modificar? 1.- Nombre";
+            cin>>x;
+            switch(x)
+                case 1:
+            cout << "Agrega el(los) Nombre(s): ";                getline(cin, p[numalums].name);           cout << "OK";
+            break;
+            default: break;
+            
 
 			encontrado = true;
 			break; // Salir del ciclo de for
@@ -272,7 +279,7 @@ void search() {
 	}
 
 	if (!encontrado) {
-		cout << "No había registros con ese nombre" << endl;
+		cout << "No habÃ­a registros con ese nombre" << endl;
 	}
 
 	system("pause > nul");
@@ -289,19 +296,17 @@ void search() {
 		cout << "------------celular: " << p[c].phone << endl;
 		cout << "----------matricula: " << p[c].mat << endl;
 		cout << "----------direccion: " << p[c].address << endl;
-
 		cout << "-----calificacion 1: " << p[c].cal1 << endl;
 		cout << "-----calificacion 2: " << p[c].cal2 << endl;
 		cout << "-calificacion final: " << p[c].calf << endl << endl << endl;
 	    }
 	}
 	
-
 	*/
 
 
-	cout << "\n¿deseas regresar al menu?" << endl;
-	cout << "1. sí     \n2. No " << endl;
+	cout << "\nÂ¿deseas regresar al menu?" << endl;
+	cout << "1. sÃ­     \n2. No " << endl;
 	cin >> x;
 	switch (x) {
 	case 1:
