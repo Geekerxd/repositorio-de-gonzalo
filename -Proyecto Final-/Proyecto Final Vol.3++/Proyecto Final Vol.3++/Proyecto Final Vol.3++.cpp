@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 
 
@@ -12,7 +13,8 @@ struct datos {
 	string phone;
 	string mat;
 	string address;
-	float cal1 = 0.0; float cal2 = 0.0; float calf = 0.0;
+	float cal1 = 0.0; float cal2 = 0.0; float calf = 0.0; float prom = 0.0;
+
 };
 /*
 int a;
@@ -34,6 +36,7 @@ void calific();
 void search();
 void modificar(); 
 void eliminate();
+void save();
 
 string k; //para que el usuario me ingrese lo que quiere buscar.
 
@@ -43,13 +46,56 @@ void main() {
 	p[0].name = { "Gonzalo Geeker" };
 	p[0].last_name = { "Aguilar Galeana" };
 	p[0].email = { "gag_g249A@hotmail.com" };
-	p[0].phone = { "81 86 846 391" };
+	p[0].phone = { "81 86 846 392" };
 	p[0].mat = { "1827045" };
 	p[0].address = { "paseo del carmen #207" };
 
 	p[0].cal1 = 89;
 	p[0].cal2 = 90;
 	p[0].calf = 91;
+
+	string l;
+
+	ifstream archivoLec("ejemploGon.txt");
+	if (archivoLec.is_open()) {
+		int i = 0;
+		while (getline(archivoLec, l)) {
+			if (i % 6 == 0) {
+				p[i / 6].name = l;
+			}
+			else if(i % 6== 1) {
+				p[i / 6].last_name = l;
+			}
+			else if (i % 6 == 2) {
+				p[i / 6].email = l;
+			}
+			else if (i % 6 == 3) {
+				p[i / 6].phone = l;
+			}
+			else if (i % 6 == 4) {
+				p[i / 6].mat = l;
+			}
+			else if (i % 6 == 5) {
+				p[i / 6].address = l;
+			}
+			i++;
+		}
+		archivoLec.close();
+
+		for (int i = 0; i < 5; i++)
+		{
+			cout << p[i].name << " " << p[i].last_name << endl;
+		}
+
+		system("pause>nul");
+		system("cls");
+	}
+	else { // Si no se pudo abrir
+		cout << "No se pudo abrir el archivo.";
+	}
+
+	// Cerrar el archivo
+	archivoLec.close();
 
 	menu();
 
@@ -62,7 +108,7 @@ void menu() {
 
 
 	cout << "    ¿qué desea hacer?" << endl;
-	cout << "     1. Agregar datos de un alumno.     \n     2. Ver los datos del alumno   \n     3. buscar alumno por matricula.\n     4. Modificar datos de un alumno.\n     5. Eliminar un alumno.\n     0. Salir de este programa." << endl;
+	cout << "     1. Agregar datos de un alumno.     \n     2. Ver los datos del alumno   \n     3. buscar alumno por matricula.\n     4. Modificar datos de un alumno.\n     5. Eliminar un alumno.\n     6. Guardar datos en el archivo.\n     0. Salir de este programa." << endl;
 	cin >> x;
 	switch (x) {
 		
@@ -81,7 +127,10 @@ void menu() {
 		modificar(); break;
 	case 5:
 		q = true;
-       eliminate(); break;
+		eliminate(); break;
+	case 6:
+		q = true;
+       save(); break;
 	case 0:
 
 		cout << "\nFin de Todo :)";
@@ -534,6 +583,44 @@ void eliminate() {
 
 		break;
 	}
+}
+void save() {
+	system("cls");
+	cout << "hemm, que hay de nuevo viejo";
+	system("pause>nul");
+
+
+
+	// Se crea objeto de escritura
+	ofstream archivo;
+
+	// Se guarda como binario
+	archivo.open("ejemplo.data", ios::binary);
+
+	// Se escribe el arreglo entero en el archivo
+	archivo.write((char*)&p, sizeof(p));
+
+	// Al terminar se cierra el archivo
+	archivo.close();
+
+
+
+	cout << "\n¿deseas regresar al menu?" << endl;
+	cout << "1. sí     \n2. No " << endl;
+	cin >> x;
+	switch (x) {
+	case 1:
+		menu(); break;
+	case 2:
+		save();
+		break;
+	default:
+		cout << "valor fuera de rango";
+		menu();
+
+		break;
+	}
+
 }
 
 	
