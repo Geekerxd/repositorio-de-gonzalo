@@ -1,3 +1,7 @@
 ﻿  Proyecto Final Vol.3++.cpp
-c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(45): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(53): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(278): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(306): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(333): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(334): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Proyecto Final Vol.3.vcxproj -> C:\Users\Dell 66895\Desktop\Programacion\repositorio de gonzalo\-Proyecto Final-\Proyecto Final Vol.3++\Proyecto Final Vol.3++\Debug\Proyecto Final Vol.3.exe
