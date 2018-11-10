@@ -28,11 +28,11 @@ struct datos {
 int a;
 cout << "¿cuantos alumnos  van a existir?"; cin >> a;*/
 
-datos p[20]; //20 alumnos como maximo
+datos p[100]; //20 alumnos como maximo
 
 int x; // para las opciones de cuando se quiere ir de una pestaña
 int c; //contador
-int numalums = 2; //numero de alumnos
+int numalums = 0; //numero de alumnos
 bool q=false; //solo freseo
 
 void menu();
@@ -49,6 +49,7 @@ void save();
 string k; //para que el usuario me ingrese lo que quiere buscar.
 
 int countAt, countDot;
+
 
 void main() {
 	/*
@@ -68,35 +69,18 @@ void main() {
 	*/
 	string l;
 	ifstream archivoLec;
-	archivoLec.open("ejemploGon.txt",ios::in);
+	archivoLec.open("ejemploGon.txt",ios::binary);
 	if (archivoLec.is_open()) {
-		int i = 0;
-		while (getline(archivoLec, l)) {
-			if (i % 6 == 0) {
-				p[i / 6].name = l;
-			}
-			else if(i % 6== 1) {
-				p[i / 6].last_name = l;
-			}
-			else if (i % 6 == 2) {
-				//p[i / 6].email = l;
-			}
-			else if (i % 6 == 3) {
-				//p[i / 6].phone = l;
-			}
-			else if (i % 6 == 4) {
-				p[i / 6].mat = l;
-			}
-			else if (i % 6 == 5) {
-				p[i / 6].address = l;
-			}
-			i++;
-		}
-		archivoLec.close();
+		archivoLec.read((char*)&p, sizeof(p));
+		//archivoLec.close();
 
-		for (int i = 0; i < 5; i++)
+		for (int i = 0; i < 100; i++)
 		{
-			cout << p[i].name << " " << p[i].last_name << endl;
+			if (p[i].name != "") {
+				numalums++;
+			} else {
+				break;
+			}
 		}
 
 		system("pause>nul");
@@ -169,14 +153,14 @@ void agregar() {
 
 
 	cout << "Estos son los alumnos que por el momento estan registrados: \n";
-	cout << "----> " << p[0].name << " <----" << endl;
+	/*cout << "----> " << p[0].name << " <----" << endl;
 	for (c = 1; c < numalums; c++) {
 		cout << "----> " << p[c].name << " <----" << endl;
 
 
 	}
 
-
+	*/
 
 
 
@@ -245,7 +229,17 @@ void agregar02() {
 		}
 
 		cin.ignore();
-	cout << "\nAgrega el Número de Celular: ";           cin>> p[numalums].phone;		       cout << "OK";
+		cout << "\nAgrega el Número de Celular: ";          cin >> p[numalums].phone;
+	/*
+	int countDig = 0;
+	for (int j = 0; p[numalums].phone[j] != NULL; j++) {
+		
+		if (p[numalums].phone[j] >= 48 && p[numalums].phone[j] <= 57) {
+			countDig++;
+		}
+	*/
+	
+	cout << "OK";
 	cin.ignore();
 	cout << "\nAgrega la Matrícula: ";                   getline(cin, p[numalums].mat);		           cout << "OK";
 	cout << "\nAgrega la Dirección : ";                  getline(cin, p[numalums].address);	           cout << "OK";
@@ -275,18 +269,18 @@ cali1:
 	int countNum=0;
 	int countFail = 0;
 	cout << "\nAgrega calificacion 1: ";                cin >> p[numalums].chcal1;
-	p[numalums].cal1 = atof(p[numalums].chcal1);       //lo cópia en el flotante
+	 p[numalums].cal1 = atof(p[numalums].chcal1);       //lo cópia en el flotante
 
 	if (p[numalums].cal1 < 0) { cout << "****La calificacion debe de ser mayor o igual a cero****\n "; goto cali1; }
 	if (p[numalums].cal1 > 100) { cout << "****La calificacion debe de ser menor o igual a cien****\n "; goto cali1; }
 
-	for (int i = 0; p[numalums].chcal1[i] != NULL; i++) {// revista si todos son numeros
+	for (int i = 0; p[numalums].chcal1[i] != NULL; i++) {// Este for revista si todos son numeros
 
 		if (p[numalums].chcal1[i] >= 48 && p[numalums].chcal1[i] <= 57) {
 			countNum++;
 		}
-		else if (p[numalums].chcal1[i] == 46) {}
-		else { countFail++; }
+		else if (p[numalums].chcal1[i] == 46) {} //detecta el . en el numero para que lo acepte
+		else { countFail++; }  // si alguno no es numero lo cuenta
 
 	}
 	if (countFail >= 1) {
@@ -296,7 +290,7 @@ cali1:
 
 	if (p[numalums].cal1 < 0) { cout << "\nLa calificacion debe de ser mayor o igual a cero\n "; goto cali1;}
 	if (p[numalums].cal1 >100) { cout << "\nLa calificacion debe de ser menor o igual a cien\n "; goto cali1; }
-	if (p[numalums].cal1 > 0 && p[numalums].cal1 < 100) { cout << "Ok"; }
+	if (p[numalums].cal1 >= 0 && p[numalums].cal1 <= 100) { cout << "Ok"; }
 	
 
 cali2:
@@ -324,14 +318,38 @@ cali2:
 
 	if (p[numalums].cal2 < 0) { cout << "\nLa calificacion debe de ser mayor o igual a cero\n "; goto cali2; }
 	if (p[numalums].cal2 > 100) { cout << "\nLa calificacion debe de ser menor o igual a cien\n "; goto cali2; }
-	if (p[numalums].cal2 > 0 && p[numalums].cal2 < 100) { cout << "Ok"; }
+	if (p[numalums].cal2 >= 0 && p[numalums].cal2 <= 100) { cout << "Ok"; }
 
-
+calif:
+	countNum = 0;
+	countFail = 0;
 	cout << "\nAgrega calificacion del ultimo examen: "; cin >> p[numalums].chcalf;
+	p[numalums].calf = atof(p[numalums].chcalf);       //lo cópia en el flotante
+
+	if (p[numalums].calf < 0) { cout << "****La calificacion debe de ser mayor o igual a cero****\n "; goto calif; }
+	if (p[numalums].calf > 100) { cout << "****La calificacion debe de ser menor o igual a cien****\n "; goto calif; }
+
+	for (int i = 0; p[numalums].chcalf[i] != NULL; i++) {// revista si todos son numeros
+
+		if (p[numalums].chcalf[i] >= 48 && p[numalums].chcalf[i] <= 57) {
+			countNum++;
+		}
+		else if (p[numalums].chcalf[i] == 46) {}
+		else { countFail++; }
+
+	}
+	if (countFail >= 1) {
+		cout << "\nIngresaste algo que no es un número. Intentalo de nuevo. \n"; goto calif;
+	}
+
+
+	if (p[numalums].calf < 0) { cout << "\nLa calificacion debe de ser mayor o igual a cero\n "; goto calif; }
+	if (p[numalums].calf > 100) { cout << "\nLa calificacion debe de ser menor o igual a cien\n "; goto calif; }
+	if (p[numalums].calf >= 0 && p[numalums].cal2 <= 100) { cout << "Ok"; }
+
 
 	
-	p[numalums].cal2 = atof(p[numalums].chcal2);
-	p[numalums].calf = atof(p[numalums].chcalf);
+	
 
 	cout << p[numalums].chcal1 << " ---- " << p[numalums].cal1<<endl;
 	cout << p[numalums].chcal2 << " ---- " << p[numalums].cal2 << endl;
@@ -705,13 +723,13 @@ void save() {
 
 	// Se crea objeto de escritura
 	ofstream archivo;
-	string j;
+	
 	// Se guarda como binario
-	archivo.open("ejemploGon.txt", ios::out);
+	archivo.open("ejemploGon.txt", ios::binary);
 
 	// Se escribe el arreglo entero en el archivo
 	archivo.write((char*)&p, sizeof(p));
-	archivo << "Holi";
+	
 	// Al terminar se cierra el archivo
 	archivo.close();
 
