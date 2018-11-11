@@ -1,1 +1,9 @@
-﻿  Proyecto Final Vol.3.vcxproj -> C:\Users\Dell 66895\Desktop\Programacion\repositorio de gonzalo\-Proyecto Final-\Proyecto Final Vol.3++\Proyecto Final Vol.3++\Debug\Proyecto Final Vol.3.exe
+﻿  Proyecto Final Vol.3++.cpp
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(56): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(289): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(340): warning C4244: 'initializing': conversion from 'float' to 'long', possible loss of data
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(451): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(728): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(742): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\dell 66895\desktop\programacion\repositorio de gonzalo\-proyecto final-\proyecto final vol.3++\proyecto final vol.3++\proyecto final vol.3++.cpp(756): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Proyecto Final Vol.3.vcxproj -> C:\Users\Dell 66895\Desktop\Programacion\repositorio de gonzalo\-Proyecto Final-\Proyecto Final Vol.3++\Proyecto Final Vol.3++\Debug\Proyecto Final Vol.3.exe
