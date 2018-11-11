@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 #include <fstream>
 
 #include <stdlib.h>
@@ -16,13 +17,13 @@ using namespace std;
 struct datos {
 	string  name;
 	string last_name;
-	char email[50];
-	char phone[15];
+	string semail;  char email[100];
+	string sphone; char phone[50];
 	string mat;
 	string address;
-	char chcal1[6];  float cal1 = 0.0;
-	char chcal2[6];  float cal2 = 0.0; 
-	char chcalf[6];  float calf = 0.0; 
+	string scal1;  char chcal1[6];  float cal1 = 0.0;
+	string scal2; char chcal2[6];  float cal2 = 0.0;
+	string scalf; char chcalf[6];  float calf = 0.0;
 	
     float prom = 0.0;
 
@@ -69,19 +70,50 @@ void main() {
 	p[0].cal2 = 90;
 	p[0].calf = 91;
 	*/
+	
 	string l;
 	ifstream archivoLec;
 	archivoLec.open("ejemploGon.txt",ios::binary);
 	if (archivoLec.is_open()) {
 		int i = 0;
 		while (getline(archivoLec, l)) {
-			if (i % 2 == 0) {
-				p[i / 2].name = l;
+			if (i % 9 == 0) {
+				p[i / 9].name = l;
 				numalums++;
 			}
-			else if (i%2==1) {
-				p[i / 2].last_name = l;
+			else if (i%9==1) {
+				p[i / 9].last_name = l;
 			}
+			else if (i % 9 == 2) {
+				p[i / 9].semail = l;
+
+				strcpy_s(p[i / 9].email, p[i / 9].semail.c_str());
+
+			}
+			else if (i % 9 == 3) {
+				p[i / 9].sphone = l;
+				strcpy_s(p[i / 9].phone, p[i / 9].sphone.c_str());
+			}
+			else if (i % 9 == 4) {
+				p[i / 9].mat = l;
+			}
+			else if (i % 9 == 5) {
+				p[i / 9].address = l;
+			}
+			else if (i % 9 == 6) {
+				p[i / 9].scal1 = l;
+				p[i / 9].cal1 = stof(p[i / 9].scal1);
+				
+			}
+			else if (i % 9 == 7) {
+				p[i / 9].scal2 = l;
+				p[i / 9].cal2 = stof(p[i / 9].scal2);
+			}
+			else if (i % 9 == 8) {
+				p[i / 9].scalf = l;
+				p[i / 9].calf = stof(p[i / 9].scalf);
+			}
+
 			
 			i++;
 		}
@@ -344,7 +376,9 @@ float truncar(float nro) {
 
 
 void calific() {
-	cout <<"******** Si no se quiere registrar una calificacion ingrese 0 en la calificacion ********" ;
+	cout << "******************************************************************\n ";
+	cout << "Si no se quiere registrar una calificacion \n ingrese 0 en la calificacion\n";
+	cout << "******************************************************************\n ";
 cali1:
 	int countNum = 0;
 	int countFail = 0;
@@ -447,6 +481,7 @@ calif:
 	cout << "calificacion 1"<< "     ---- " << p[numalums].cal1 << endl;
 	cout << "calificacion 2"<< "     ---- " << p[numalums].cal2 << endl;
 	cout << "calificacion Final"<< " ---- " << p[numalums].calf << endl;
+
 	if (p[numalums].cal1 == 0 || p[numalums].cal2 == 0 || p[numalums].calf == 0) {p[numalums].prom = 0;}
 	else {p[numalums].prom = (p[numalums].cal1*0.30) + (p[numalums].cal2*0.45) + (p[numalums].calf*0.25);}
 	
@@ -465,6 +500,12 @@ void view() {
 	/*cout<<"¿cual es el nombre del alumno que quiere ver?";*/
 
 	for (c = 0; c < numalums; c++) {   //muetra todos
+
+		if (p[c].cal1 == 0 || p[c].cal2 == 0 || p[c].calf == 0) { p[c].prom = 0; }
+		else { p[c].prom = (p[c].cal1*0.30) + (p[c].cal2*0.45) + (p[c].calf*0.25);
+		p[c].prom = truncar(p[c].prom); // lo trunquea para que quede 2 dedimales
+		}
+
 		
 		cout << "----------Nombre(s): " << p[c].name << endl;
 		cout << "--------Apellido(s): " << p[c].last_name << endl;
@@ -718,6 +759,7 @@ void modificar() {
 						cin.ignore();
 						cout << "Agrega calificacion 1: ";   cali01:  
 						cin >> p[l].cal1; 
+						p[l].cal1 = truncar(p[l].cal1); // lo trunquea para que quede 2 dedimales
 						if (p[l].cal1 < 0) { cout << "****La calificacion debe de ser mayor o igual a cero****\n "; goto cali01; }
 						if (p[l].cal1 > 100) { cout << "****La calificacion debe de ser menor o igual a cien****\n "; goto cali01; }
 						if (p[l].cal1 >= 0 && p[l].cal1 <= 100) {
@@ -725,13 +767,16 @@ void modificar() {
 
 						}
 						if (p[l].cal1 == 0 ) { p[l].prom = 0; }
-						else { p[l].prom = (p[l].cal1*0.30) + (p[l].cal2*0.45) + (p[l].calf*0.25); }
+						else { p[l].prom = (p[l].cal1*0.30) + (p[l].cal2*0.45) + (p[l].calf*0.25);
+						p[l].prom = truncar(p[l].prom); // lo trunquea para que quede 2 dedimales
+						}
 
 						break;
 					case 8:
 						cin.ignore();  
 						cout << "Agrega calificacion 2: ";   cali02:        
 						cin >> p[l].cal2;
+						p[l].cal2 = truncar(p[l].cal2); // lo trunquea para que quede 2 dedimales
 						if (p[l].cal2 < 0) { cout << "****La calificacion debe de ser mayor o igual a cero****\n "; goto cali02; }
 						if (p[l].cal2 > 100) { cout << "****La calificacion debe de ser menor o igual a cien****\n "; goto cali02; }
 						if (p[l].cal2 >= 0 && p[l].cal2 <= 100) {
@@ -739,13 +784,16 @@ void modificar() {
 
 						}
 						if ( p[l].cal2 == 0 ) { p[l].prom = 0; }
-						else { p[l].prom = (p[l].cal1*0.30) + (p[l].cal2*0.45) + (p[l].calf*0.25); }
+						else { p[l].prom = (p[l].cal1*0.30) + (p[l].cal2*0.45) + (p[l].calf*0.25);
+						p[l].prom = truncar(p[l].prom); // lo trunquea para que quede 2 dedimales
+						}
 						break;
 					case 9:
 						cin.ignore();
 						cout << "Agrega calificacion del ultimo examen: ";
 					cali0f:
 						cin >> p[l].calf; 
+						p[l].calf = truncar(p[l].calf); // lo trunquea para que quede 2 dedimales
 						if (p[l].calf < 0) { cout << "****La calificacion debe de ser mayor o igual a cero****\n "; goto cali0f; }
 						if (p[l].calf > 100) { cout << "****La calificacion debe de ser menor o igual a cien****\n "; goto cali0f; }
 						if (p[l].calf >= 0 && p[l].calf <= 100) {
@@ -753,7 +801,9 @@ void modificar() {
 
 						}
 						if ( p[l].calf == 0) { p[l].prom = 0; }
-						else { p[l].prom = (p[l].cal1*0.30) + (p[l].cal2*0.45) + (p[l].calf*0.25); }
+						else { p[l].prom = (p[l].cal1*0.30) + (p[l].cal2*0.45) + (p[l].calf*0.25);
+						p[l].prom = truncar(p[l].prom); // lo trunquea para que quede 2 dedimales
+						}
 						break;
 					case 0:break;
 					default: break;
@@ -900,6 +950,14 @@ void save() {
 	for (c = 0; c < numalums; c++) {
 		archivo << p[c].name << endl;
 		archivo << p[c].last_name << endl;
+		archivo << p[c].email << endl;
+		archivo << p[c].phone << endl;
+		archivo << p[c].mat << endl;
+		archivo << p[c].address << endl;
+
+		archivo << p[c].cal1 << endl;
+		archivo << p[c].cal2 << endl;
+		archivo << p[c].calf << endl;
 		
 	}
 	
