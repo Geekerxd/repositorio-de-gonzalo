@@ -1,4 +1,4 @@
-#Manual de usuario
+# Manual de usuario
 Por Gonzalo Aguilar
 ***
 Indice
