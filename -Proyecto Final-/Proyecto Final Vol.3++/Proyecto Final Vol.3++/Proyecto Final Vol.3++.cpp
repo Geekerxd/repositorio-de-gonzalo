@@ -145,7 +145,7 @@ void menu() {
 
 
 	cout << "    ¿qué desea hacer?" << endl;
-	cout << "     1. Agregar datos de un alumno.     \n     2. Ver los datos del alumno   \n     3. buscar alumno por matricula.\n     4. Modificar datos de un alumno.\n     5. Eliminar un alumno.\n     6. Guardar datos en el archivo.\n     0. Salir de este programa." << endl;
+	cout << "     1. Agregar datos de un alumno.     \n     2. Ver los datos del alumno.   \n     3. buscar alumno por matricula.\n     4. Modificar datos de un alumno.\n     5. Eliminar un alumno.\n     6. Guardar datos en el archivo.\n     0. Salir de este programa." << endl;
 	cin >> x;
 	switch (x) {
 		
