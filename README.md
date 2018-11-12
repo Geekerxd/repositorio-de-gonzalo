@@ -7,12 +7,12 @@ Indice
 * ¿Qué se puede hacer en el programa?
 * ¿Cómo se utiliza el programa?
 * ¿Cómo se utilizan cada una de las opciones?
-  * 1. Agregar datos de un alumno.
-  * 2. Ver los datos del alumno.
-  * 3. buscar alumno por matricula.
-  * 4. Modificar datos de un alumno.
-  * 5. Eliminar un alumno.
-  * 6. Guardar datos en el archivo.
+  * 1.-Agregar datos de un alumno.
+  * 2.-Ver los datos del alumno.
+  * 3.-buscar alumno por matricula.
+  * 4.-Modificar datos de un alumno.
+  * 5.-Eliminar un alumno.
+  * 6.-Guardar datos en el archivo.
 
 ---
 ¿Para que sirve el programa?
