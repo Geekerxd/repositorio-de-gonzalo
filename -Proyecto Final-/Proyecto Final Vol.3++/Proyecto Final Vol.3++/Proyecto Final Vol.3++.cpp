@@ -45,7 +45,7 @@ void search();
 void modificar(); 
 void eliminate();
 void save();
-
+void mu();
 string k; //para que el usuario me ingrese lo que quiere buscar.
 
 int countAt, countDot;
@@ -145,7 +145,7 @@ void menu() {
 
 
 	cout << "    ¿qué desea hacer?" << endl;
-	cout << "     1. Agregar datos de un alumno.     \n     2. Ver los datos del alumno.   \n     3. buscar alumno por matricula.\n     4. Modificar datos de un alumno.\n     5. Eliminar un alumno.\n     6. Guardar datos en el archivo.\n     0. Salir de este programa." << endl;
+	cout << "     1. Agregar datos de un alumno.     \n     2. Ver los datos del alumno.   \n     3. buscar alumno por matricula.\n     4. Modificar datos de un alumno.\n     5. Eliminar un alumno.\n     6. Guardar datos en el archivo.\n     7. Consultar manual de Usiuario.\n     0. Salir de este programa." << endl;
 	cin >> x;
 	switch (x) {
 		
@@ -168,6 +168,9 @@ void menu() {
 	case 6:
 		q = true;
        save(); break;
+	case 7:
+		q = true;
+		mu(); break;
 	case 0:
 
 		cout << "\nFin de Todo :)";
@@ -987,6 +990,59 @@ void save() {
 	}
 
 }
+void mu() {
+	system("cls");
 
+	cout << "Estas en el manual de usuario.\n\n";
+	cout << "Indice\n";
+	cout <<"¿Para que sirve el programa ?				"<<endl;
+	cout <<"¿Qué se puede hacer en el programa ?		"<<endl;
+	cout <<"¿Cómo se utiliza el programa ?				"<<endl;
+	cout <<"¿Cómo se utilizan cada una de las opciones ?"<<endl;
+	cout <<"1. - Agregar datos de un alumno.			"<<endl;
+	cout <<"2. - Ver los datos del alumno.				"<<endl;
+	cout <<"3. - buscar alumno por matricula.			"<<endl;
+	cout <<"4. - Modificar datos de un alumno.			"<<endl;
+	cout <<"5. - Eliminar un alumno.					"<<endl;
+	cout <<"6. - Guardar datos en el archivo.			"<< endl;
+
+
+	cout<<"¿Para que sirve el programa ?"<<endl;
+	cout<<"	El programa sirve para dar de alta a alumnos y tener sus datos, podiendose modificar, borrar, leer y guardar en un archivo de texto." << endl;
+																																																																														 
+cout<<"	¿Qué se puede hacer en el programa ?"<<endl;
+cout<<"Una de las funciones principales del programa es dar de alta a alumnos pidiendo el o los nombres y el apellido, correo electronico, el número de teléfono, matrícula, dirección y la capacidad para almacenar 3 calificaciones."<<endl;
+																																																																												 
+cout<<"El programa cuenta con un menú principal en el cual se puede ingresar a sub - menús en los cuales se puede navegar y tienen una funcion especifica."<<endl;
+																																																																													 
+cout<<"Se puede registrar alumnos, ver a los alumnos registrados, buscar a un alumno por matricula, modificar los datos de un alumno, eliminar a un alumno y por ultimo guardar todos los datos que lleva por el momento en un archivo que servirá para leer esos mismos datos en el programa en otra ocación."<<endl;
+
+
+cout<<"¿Cómo se utiliza el programa ?"<<endl;
+cout<<"En pantalla se muetra un menú para elegir a que sub - menú se quiere ingresar.Para ingresar a uno solo tiene que teclear el número que esta a la izquierda de cada una de las opciones. "<<endl;
+
+cout << "********************************************************************************\n";
+cout << "Para más informacion consulte: https://github.com/Geekerxd/repositorio-de-gonzalo/blob/master/README.md"<<endl;
+cout << "ó consulte el archivo readme.md de la carpeta proyecto Final";
+cout << "********************************************************************************\n";
+
+	cout << "\n¿deseas regresar al menu?" << endl;
+	cout << "1. sí     \n2. No " << endl;
+	cin >> x;
+	switch (x) {
+	case 1:
+		menu(); break;
+	case 2:
+		mu();
+		break;
+	default:
+		cout << "valor fuera de rango";
+		menu();
+
+		break;
+	}
+
+
+}
 	
 
