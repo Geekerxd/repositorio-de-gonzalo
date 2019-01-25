@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+int max=-100,min=100,prom=0,n[10],aux=0;
+
+int main()
+{
+    for(int i=0;i<10;i++){cin>>n[i];}//lee todos los datos
+    
+    for (i=0;i<10;i++){
+        if(num[i]>max){
+            max=num[i];
+        }
+        if(num[i]<min){
+            min=num[i];
+        }
+        prom=num[i]+aux;
+        aux=prom;
+    }
+    
+cout <<"maximo: "<<max<<"\nminimo: "<<min<<"\nProm: "<<prom;
+    return 0;
+}
